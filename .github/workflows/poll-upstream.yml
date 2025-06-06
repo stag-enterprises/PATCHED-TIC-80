@@ -12,6 +12,6 @@ jobs:
       pull-requests: write
     uses: ./.github/workflows/sync-upstream.yml
     with:
-      source: https://git.sr.ht/~tsileo/microblog.pub
-      source_branch: v2
-      target_branch: v2
+      source: https://github.com/nesbox/TIC-80
+      source_branch: main
+      target_branch: main

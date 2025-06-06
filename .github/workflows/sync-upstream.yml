@@ -43,6 +43,7 @@ on:
 permissions:
   contents: write       # To push the sync branch and delete it if not needed
   pull-requests: write  # To create PR and enable auto-merge
+  actions: write # CI Update
 
 jobs:
   sync_and_pr:

@@ -10,6 +10,7 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+      actions: write
     uses: ./.github/workflows/sync-upstream.yml
     with:
       source: https://github.com/nesbox/TIC-80

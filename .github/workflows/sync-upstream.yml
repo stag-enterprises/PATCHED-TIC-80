@@ -72,7 +72,7 @@ jobs:
         run: |
           UPSTREAM_URL="${{ inputs.source }}"
           UPSTREAM_BRANCH="${{ inputs.source_branch }}"
-          TARGET_URL="https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
+          TARGET_URL="https://x-access-token:${{ secrets._GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
           TEMP_DIR=$(mktemp -d)
 
           echo "cloning '$UPSTREAM_BRANCH' from '$UPSTREAM_URL'"
@@ -109,7 +109,7 @@ jobs:
         run: |
           TARGET_BRANCH="${{ inputs.target_branch }}"
           SYNC_BRANCH="${{ steps.prepare_branch.outputs.sync_branch_name }}"
-          TARGET_URL="https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
+          TARGET_URL="https://x-access-token:${{ secrets._GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
           TEMP_DIR=$(mktemp -d)
           SKIP_PR="false"
 
@@ -166,7 +166,7 @@ jobs:
         id: create_pr
         shell: bash
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets._GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
         run: |
           SYNC_BRANCH="${{ steps.prepare_branch.outputs.sync_branch_name }}"
@@ -208,7 +208,7 @@ jobs:
         if: steps.pr_needed.outputs.skip_pr == 'false' && (steps.create_pr.outputs.pr_url != '' || steps.create_pr.outcome == 'success')
         shell: bash
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets._GITHUB_TOKEN }}
         run: |
           PR_IDENTIFIER="${{ steps.create_pr.outputs.pr_url }}"
           if [ -z "$PR_IDENTIFIER" ]; then

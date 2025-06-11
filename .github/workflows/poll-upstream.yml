@@ -16,3 +16,4 @@ jobs:
       source: https://github.com/nesbox/TIC-80
       source_branch: main
       target_branch: main
+    secrets: inherit

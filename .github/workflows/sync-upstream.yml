@@ -72,7 +72,7 @@ jobs:
         run: |
           UPSTREAM_URL="${{ inputs.source }}"
           UPSTREAM_BRANCH="${{ inputs.source_branch }}"
-          TARGET_URL="https://${{ vars._GITHUB_USER }}:${{ secrets._GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
+          TARGET_URL="https://x-access-token:${{ secrets._GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
           TEMP_DIR=$(mktemp -d)
 
           echo "cloning '$UPSTREAM_BRANCH' from '$UPSTREAM_URL'"
@@ -109,7 +109,7 @@ jobs:
         run: |
           TARGET_BRANCH="${{ inputs.target_branch }}"
           SYNC_BRANCH="${{ steps.prepare_branch.outputs.sync_branch_name }}"
-          TARGET_URL="https://${{ vars._GITHUB_USER }}:${{ secrets._GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
+          TARGET_URL="https://x-access-token:${{ secrets._GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
           TEMP_DIR=$(mktemp -d)
           SKIP_PR="false"
 
